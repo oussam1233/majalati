@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <meta name="description" content="جميع مقالات مجلّتكم العربية.">
+  <meta name="description" content="قراءة الخبر كاملاً في مجلّتكم.">
   <meta name="theme-color" content="#0f4c81">
-  <title>المقالات | مجلّتكم</title>
+  <title>الخبر | مجلّتكم</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body data-page="articles">
+<body data-page="news-article">
 
 <header class="site-header">
   <div class="container header-inner">
 
-    <a href="index.html" class="brand" aria-label="الصفحة الرئيسية">
+    <a href="index.html" class="brand">
       <span class="brand-mark">م</span>
       <span>مجَلّتكم</span>
     </a>
@@ -24,30 +24,25 @@
     <nav class="main-nav" aria-label="التنقل الرئيسي"></nav>
 
     <div class="header-tools">
+
       <div class="search-shell">
         <input
           id="searchInput"
           type="search"
           placeholder="ابحث عن خبر أو مقال..."
-          aria-label="البحث"
           autocomplete="off"
         >
         <div id="searchDropdown" class="search-dropdown"></div>
       </div>
 
-      <button
-        id="themeToggle"
-        class="theme-toggle"
-        type="button"
-        aria-label="تبديل الوضع"
-      >🌙</button>
+      <button id="themeToggle" class="theme-toggle" type="button">🌙</button>
 
       <button
         class="menu-toggle"
         type="button"
-        aria-label="فتح القائمة"
         aria-expanded="false"
       >☰</button>
+
     </div>
 
   </div>
@@ -55,29 +50,8 @@
 
 <main class="page-shell">
 
-  <div class="container page-header">
-    <span class="eyebrow">📚 مكتبة المجلة</span>
-    <h1>المقالات</h1>
-    <p class="page-description">
-      مجموعة من المقالات والتحليلات المتنوعة في السياسة والاقتصاد
-      والتكنولوجيا والرياضة والمجتمع والعالم.
-    </p>
-  </div>
-
-  <section class="container">
-
-    <div class="category-filter" id="articleCategoryFilter"></div>
-
-    <div class="section-head">
-      <h2>جميع المقالات</h2>
-      <span class="news-count" id="articlesCount"></span>
-    </div>
-
-    <div id="articlesGrid" class="card-grid news-grid"></div>
-
-    <div id="articlesPagination" class="pagination"></div>
-
-  </section>
+  <article id="newsArticleDetails" class="container article-page">
+  </article>
 
 </main>
 
@@ -86,9 +60,7 @@
 
     <div class="footer-brand">
       <h3>مجَلّتكم</h3>
-      <p>
-        صحافة عربية حديثة، تحليل دقيق، ورؤية احترافية.
-      </p>
+      <p>صحافة عربية حديثة، تحليل دقيق، ورؤية احترافية.</p>
     </div>
 
     <div class="footer-column">
@@ -103,10 +75,10 @@
     <div class="footer-column">
       <h4>الأقسام</h4>
       <ul>
-        <li><a href="articles.html?category=سياسة">السياسة</a></li>
-        <li><a href="articles.html?category=اقتصاد">الاقتصاد</a></li>
-        <li><a href="articles.html?category=تكنولوجيا">التكنولوجيا</a></li>
-        <li><a href="articles.html?category=رياضة">الرياضة</a></li>
+        <li><a href="news.html?category=سياسة">السياسة</a></li>
+        <li><a href="news.html?category=اقتصاد">الاقتصاد</a></li>
+        <li><a href="news.html?category=تكنولوجيا">التكنولوجيا</a></li>
+        <li><a href="news.html?category=رياضة">الرياضة</a></li>
       </ul>
     </div>
 
@@ -115,12 +87,7 @@
       <p>اشترك ليصلك جديد المجلة.</p>
 
       <form class="newsletter-form" id="newsletterForm">
-        <input
-          type="email"
-          placeholder="بريدك الإلكتروني"
-          aria-label="البريد الإلكتروني"
-          required
-        >
+        <input type="email" placeholder="بريدك الإلكتروني" required>
         <button type="submit">اشترك</button>
       </form>
     </div>

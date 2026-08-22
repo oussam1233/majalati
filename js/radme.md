@@ -83,7 +83,6 @@
 
 # 📁 بنية المشروع
 
-```text
 majalati/
 │
 ├── index.html
@@ -98,13 +97,6 @@ majalati/
 │   └── app.js
 │
 ├── assets/
-│   ├── favicon.svg
-│   ├── news-1.jpg
-│   ├── news-2.jpg
-│   ├── news-3.jpg
-│   ├── news-4.jpg
-│   ├── news-5.jpg
-│   ├── news-6.jpg
-│   └── default-news.jpg
+│   └── favicon.svg
 │
-└── README.
+└── README.md

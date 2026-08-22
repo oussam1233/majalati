@@ -99,12 +99,4 @@ majalati/
 │
 ├── assets/
 │   ├── favicon.svg
-│   ├── news-1.jpg
-│   ├── news-2.jpg
-│   ├── news-3.jpg
-│   ├── news-4.jpg
-│   ├── news-5.jpg
-│   ├── news-6.jpg
-│   └── default-news.jpg
-│
 └── README.
