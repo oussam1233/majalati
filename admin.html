@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  
+  <meta name="google-site-verification" content="Nu-kXpSLTMde5jcjGrpag2OAevILtgVXfCa5nAiJ6vM" />
+  <meta name="google-site-verification" content="EJ1G8l--z2Iq7csYC8mAZ7VeTXp_BVeyK77AyGq3p4Q" />
+    <title>الإدارة | مجَلّتكم</title>
+    <meta name="description" content="لوحة إدارة محتوى المجلة." />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body data-page="admin">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="brand" aria-label="الصفحة الرئيسية">
+          <span class="brand-mark">م</span>
+          <span>مجَلّتكم</span>
+        </a>
+
+        <nav class="main-nav" aria-label="التنقل الرئيسي"></nav>
+
+        <div class="header-tools">
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="تبديل الوضع الداكن والفاتح">🌙</button>
+          <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container admin-shell">
+      <section class="page-header">
+        <div>
+          <span class="eyebrow">لوحة التحكم</span>
+          <h1>إدارة المحتوى</h1>
+        </div>
+      </section>
+
+      <section class="admin-stats" id="adminStats"></section>
+
+      <section class="admin-panel">
+        <form id="postForm" class="post-form">
+          <input type="hidden" id="postId" />
+          <div class="search-shell">
+
+  <input
+    id="searchInput"
+    type="search"
+    placeholder="ابحث في المقالات..."
+    aria-label="بحث فوري في المقالات"
+    autocomplete="off"
+  >
+
+  <div
+    id="searchDropdown"
+    class="search-dropdown"
+  ></div>
+
+</div>
+
+          <div class="field-row two-col">
+            <label>
+              النوع
+              <select id="postType">
+                <option value="article">مقال</option>
+                <option value="news">خبر</option>
+              </select>
+            </label>
+
+            <label>
+              القسم
+              <select id="postCategory">
+                <option value="سياسة">سياسة</option>
+                <option value="رياضة">رياضة</option>
+                <option value="مجتمع">مجتمع</option>
+                <option value="تكنولوجيا">تكنولوجيا</option>
+                <option value="دولي">دولي</option>
+                <option value="اقتصاد">اقتصاد</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            العنوان
+            <input id="postTitle" type="text" placeholder="عنوان المقال أو الخبر" required />
+          </label>
+
+          <label>
+            رابط الصورة
+            <input id="postImage" type="url" placeholder="https://images.unsplash.com/..." />
+          </label>
+
+          <label>
+            الملخص
+            <textarea id="postSummary" rows="3" placeholder="ملخص قصير يوضح الفكرة الرئيسية" required></textarea>
+          </label>
+
+          <label>
+            المحتوى الكامل
+            <textarea id="postContent" rows="8" placeholder="اكتب محتوى المقال أو الخبر متعدد الفقرات" required></textarea>
+          </label>
+
+          <div class="field-row two-col">
+            <label class="check-field">
+              <input id="postFeatured" type="checkbox" />
+              <span>مميز في الصفحة الرئيسية</span>
+            </label>
+
+            <label class="check-field">
+              <input id="postPublished" type="checkbox" checked />
+              <span>منشور</span>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="primary-btn" type="submit">حفظ</button>
+            <button class="secondary-btn" type="button" id="resetFormBtn">إلغاء</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="admin-tools">
+        <button class="primary-btn" type="button" id="generateSamplesBtn">توليد مقالات تجريبية</button>
+        <button class="secondary-btn" type="button" id="restoreDefaultsBtn">إعادة البيانات الافتراضية</button>
+        <button class="secondary-btn" type="button" id="exportBtn">تصدير JSON</button>
+        <button class="secondary-btn" type="button" id="importBtn">استيراد JSON</button>
+        <input id="importInput" type="file" accept="application/json" hidden />
+      </section>
+
+      <section class="admin-preview-panel">
+        <h2>معاينة المقال</h2>
+        <div id="adminPreview" class="admin-preview"></div>
+      </section>
+
+      <section class="admin-list">
+        <h2>قائمة المحتوى</h2>
+        <div id="adminTable" class="table-wrap"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <h3>مجَلّتكم</h3>
+          <p>إدارة سهلة ومحتوى متجدد.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

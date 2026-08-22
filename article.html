@@ -1,0 +1,501 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="robots"
+    content="index, follow"
+  >
+
+  <meta
+    name="googlebot"
+    content="index, follow"
+  >
+
+  <title id="articleTitle">المقال | مجَلّتكم</title>
+
+  <meta
+    id="articleDescription"
+    name="description"
+    content="اقرأ المقال كاملاً في مجَلّتكم."
+  >
+
+  <meta
+    name="theme-color"
+    content="#0f4c81"
+  >
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="assets/favicon.svg"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/styles.css"
+  >
+
+  <link
+    id="articleCanonical"
+    rel="canonical"
+    href=""
+  >
+
+  <script
+    id="articleSchema"
+    type="application/ld+json">
+  </script>
+</head>
+
+<body data-page="article">
+
+  <!-- HEADER -->
+  <header class="site-header">
+
+    <div class="container header-inner">
+
+      <a
+        href="index.html"
+        class="brand"
+        aria-label="مجَلّتكم - الصفحة الرئيسية"
+      >
+        <span class="brand-mark">م</span>
+        <span>مجَلّتكم</span>
+      </a>
+
+      <nav
+        class="main-nav"
+        id="mainNav"
+        aria-label="التنقل الرئيسي"
+      ></nav>
+
+      <div class="header-tools">
+
+        <div class="search-shell">
+
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="ابحث عن مقال..."
+            aria-label="البحث عن مقال"
+            autocomplete="off"
+          >
+
+          <div
+            id="searchDropdown"
+            class="search-dropdown"
+            aria-live="polite"
+          ></div>
+
+        </div>
+
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="تبديل الوضع"
+          title="تبديل الوضع"
+        >
+          🌙
+        </button>
+
+        <button
+          id="menuToggle"
+          class="menu-toggle"
+          type="button"
+          aria-label="فتح القائمة"
+          aria-expanded="false"
+          aria-controls="mainNav"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+  <main class="container page-shell">
+
+    <!-- LOADING -->
+    <div
+      id="articleLoading"
+      class="empty-state"
+    >
+      جارٍ تحميل المقال...
+    </div>
+
+
+    <!-- ERROR -->
+    <section
+      id="articleError"
+      class="empty-state"
+      hidden
+    >
+
+      <div class="empty-icon">📄</div>
+
+      <h2>المقال غير موجود</h2>
+
+      <p>
+        عذراً، لم نتمكن من العثور على المقال المطلوب.
+      </p>
+
+      <a
+        href="articles.html"
+        class="primary-btn"
+      >
+        العودة إلى المقالات
+      </a>
+
+    </section>
+
+
+    <!-- ARTICLE -->
+    <article
+      id="articleContent"
+      class="article-page"
+      hidden
+    >
+
+      <header class="article-header">
+
+        <span
+          id="articleCategory"
+          class="eyebrow"
+        >
+          عام
+        </span>
+
+        <h1 id="articleHeading">
+          عنوان المقال
+        </h1>
+
+        <p
+          id="articleExcerpt"
+          class="article-lead"
+        >
+          ملخص المقال
+        </p>
+
+        <div
+          id="articleMeta"
+          class="meta-row article-meta"
+        ></div>
+
+      </header>
+
+
+      <!-- ARTICLE IMAGE -->
+      <figure class="article-figure">
+
+        <img
+          id="articleImage"
+          src="assets/favicon.svg"
+          alt="صورة المقال"
+          loading="eager"
+          width="1200"
+          height="650"
+        >
+
+      </figure>
+
+
+      <!-- ARTICLE BODY -->
+      <div
+        id="articleBody"
+        class="article-body-full"
+      ></div>
+
+
+      <!-- FOOTER BUTTONS -->
+      <footer class="article-footer">
+
+        <a
+          href="articles.html"
+          class="secondary-btn"
+        >
+          ← العودة إلى المقالات
+        </a>
+
+        <a
+          href="news.html"
+          class="secondary-btn"
+        >
+          آخر الأخبار
+        </a>
+
+      </footer>
+
+    </article>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+
+        <h3>مجَلّتكم</h3>
+
+        <p>
+          صحافة عربية حديثة، تحليل دقيق، ورؤية احترافية.
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>روابط سريعة</h4>
+
+        <ul>
+
+          <li>
+            <a href="index.html">
+              الرئيسية
+            </a>
+          </li>
+
+          <li>
+            <a href="articles.html">
+              المقالات
+            </a>
+          </li>
+
+          <li>
+            <a href="news.html">
+              الأخبار
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>الأقسام</h4>
+
+        <ul>
+
+          <li>
+            <a href="articles.html?category=سياسة">
+              🏛️ سياسة
+            </a>
+          </li>
+
+          <li>
+            <a href="articles.html?category=اقتصاد">
+              💰 اقتصاد
+            </a>
+          </li>
+
+          <li>
+            <a href="articles.html?category=تكنولوجيا">
+              💻 تكنولوجيا
+            </a>
+          </li>
+
+          <li>
+            <a href="articles.html?category=مجتمع">
+              👥 مجتمع
+            </a>
+          </li>
+
+          <li>
+            <a href="articles.html?category=رياضة">
+              ⚽ رياضة
+            </a>
+          </li>
+
+          <li>
+            <a href="articles.html?category=العالم">
+              🌍 العالم
+            </a>
+          </li>
+
+          <li>
+            <a href="articles.html?category=ذكاء%20اصطناعي">
+              🤖 ذكاء اصطناعي
+            </a>
+          </li>
+
+          <li>
+            <a href="articles.html?category=تطبيقات">
+              📱 تطبيقات
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>النشرة البريدية</h4>
+
+        <p>
+          اشترك ليصلك جديد المجلة.
+        </p>
+
+        <form
+          class="newsletter-form"
+          id="newsletterForm"
+        >
+
+          <input
+            type="email"
+            name="email"
+            placeholder="أدخل بريدك الإلكتروني"
+            aria-label="البريد الإلكتروني"
+            autocomplete="email"
+            required
+          >
+
+          <button type="submit">
+            اشترك
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+      © 2026 مجلّتكم — جميع الحقوق محفوظة
+    </div>
+
+  </footer>
+
+
+  <script
+    src="js/app.js"
+    defer
+  ></script>
+
+</body>
+=======
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="قراءة المقال كاملاً في مجلّتكم.">
+  <meta name="theme-color" content="#0f4c81">
+  <title>المقال | مجلّتكم</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body data-page="article">
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="index.html" class="brand">
+      <span class="brand-mark">م</span>
+      <span>مجَلّتكم</span>
+    </a>
+
+    <nav class="main-nav" aria-label="التنقل الرئيسي"></nav>
+
+    <div class="header-tools">
+
+      <div class="search-shell">
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="ابحث عن خبر أو مقال..."
+          autocomplete="off"
+        >
+        <div id="searchDropdown" class="search-dropdown"></div>
+      </div>
+
+      <button id="themeToggle" class="theme-toggle" type="button">🌙</button>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+      >☰</button>
+
+    </div>
+
+  </div>
+</header>
+
+<main class="page-shell">
+
+  <article id="articleDetails" class="container article-page">
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+
+    <div class="footer-brand">
+      <h3>مجَلّتكم</h3>
+      <p>صحافة عربية حديثة، تحليل دقيق، ورؤية احترافية.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="articles.html">المقالات</a></li>
+        <li><a href="news.html">الأخبار</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>الأقسام</h4>
+      <ul>
+        <li><a href="articles.html?category=سياسة">السياسة</a></li>
+        <li><a href="articles.html?category=اقتصاد">الاقتصاد</a></li>
+        <li><a href="articles.html?category=تكنولوجيا">التكنولوجيا</a></li>
+        <li><a href="articles.html?category=رياضة">الرياضة</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>النشرة البريدية</h4>
+      <p>اشترك ليصلك جديد المجلة.</p>
+
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="بريدك الإلكتروني" required>
+        <button type="submit">اشترك</button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 مجلّتكم — جميع الحقوق محفوظة
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+>>>>>>> e59faae (Update pagination)
+</html>
