@@ -2,102 +2,49 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow">
-
-  <meta
-    name="google-site-verification"
-    content="Nu-kXpSLTMde5jcjGrpag2OAevILtgVXfCa5nAiJ6vM"
-  >
-
-  <meta
-    name="google-site-verification"
-    content="EJ1G8l--z2Iq7csYC8mAZ7VeTXp_BVeyK77AyGq3p4Q"
-  >
-
-  <meta
-    name="description"
-    content="مجَلّتكم - مجلة عربية حديثة تتابع السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم والذكاء الاصطناعي."
-  >
-
+  <meta name="google-site-verification" content="Nu-kXpSLTMde5jcjGrpag2OAevILtgVXfCa5nAiJ6vM" />
+  <meta name="google-site-verification" content="EJ1G8l--z2Iq7csYC8mAZ7VeTXp_BVeyK77AyGq3p4Q" />
+  <meta name="description" content="مجَلّتكم - مجلة عربية حديثة تتابع السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم والذكاء الاصطناعي.">
   <meta name="theme-color" content="#0f4c81">
-
   <title>مجَلّتكم | مجلة عربية</title>
-
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="assets/favicon.svg"
-  >
-
-  <link
-    rel="stylesheet"
-    href="css/styles.css"
-  >
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body data-page="home">
 
   <!-- ================= HEADER ================= -->
-
   <header class="site-header">
     <div class="container header-inner">
 
-      <a
-        href="index.html"
-        class="brand"
-        aria-label="الصفحة الرئيسية"
-      >
+      <a href="index.html" class="brand" aria-label="الصفحة الرئيسية">
         <span class="brand-mark">م</span>
         <span>مجَلّتكم</span>
       </a>
 
-      <nav
-        class="main-nav"
-        aria-label="التنقل الرئيسي"
-      ></nav>
+      <nav class="main-nav" aria-label="التنقل الرئيسي">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link active">🏠 الرئيسية</a></li>
+          <li><a href="news.html" class="nav-link">📰 الأخبار</a></li>
+          <li><a href="articles.html" class="nav-link">📚 المقالات</a></li>
+        </ul>
+      </nav>
 
       <div class="header-tools">
 
         <div class="search-shell">
-
-          <input
-            id="searchInput"
-            type="search"
-            placeholder="ابحث عن خبر أو مقال..."
-            aria-label="البحث"
-            autocomplete="off"
-          >
-
-          <div
-            id="searchDropdown"
-            class="search-dropdown"
-            aria-live="polite"
-          ></div>
-
+          <input id="searchInput" type="search" placeholder="ابحث عن خبر أو مقال..." aria-label="البحث" autocomplete="off">
+          <div id="searchDropdown" class="search-dropdown" aria-live="polite"></div>
         </div>
 
-        <button
-          id="themeToggle"
-          class="theme-toggle"
-          type="button"
-          aria-label="تبديل الوضع"
-        >
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="تبديل الوضع">
           🌙
         </button>
 
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-label="فتح القائمة"
-          aria-expanded="false"
-        >
+        <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">
           ☰
         </button>
 
@@ -106,240 +53,283 @@
     </div>
   </header>
 
-
   <!-- ================= MAIN ================= -->
-
   <main>
 
-    <!-- ================= HERO ================= -->
-
+    <!-- ===== HERO مع نقاط ● ● ● ● ● ===== -->
     <section class="hero-wrap container">
-
-      <div class="featured-badge">
-        ⭐ المقال المميز
-      </div>
-
-      <div
-        id="heroFeatured"
-        class="hero-featured"
-        aria-live="polite"
-      ></div>
-
+      <div class="featured-badge">⭐ المقال المميز</div>
+      <div id="heroFeatured" class="hero-featured" aria-live="polite"></div>
     </section>
 
-
-    <!-- ================= LATEST ARTICLES ================= -->
-
+    <!-- ===== المحتوى ===== -->
     <section class="container section-block">
-
       <div class="section-head">
-
-        <h2>
-          أحدث المقالات
-        </h2>
-
-        <a href="articles.html">
-          عرض كل المقالات ←
-        </a>
-
+        <h2>📖 أحدث المحتوى</h2>
       </div>
-
-      <div
-        id="latestArticles"
-        class="card-grid"
-      ></div>
-
-    </section>
-
-
-    <!-- ================= NEWS ================= -->
-
-    <section class="container section-block">
-
-      <div class="section-head">
-
-        <h2>
-          آخر الأخبار
-        </h2>
-
-        <a href="news.html">
-          عرض كل الأخبار ←
-        </a>
-
-      </div>
-
-      <div
-        id="latestNews"
-        class="card-grid news-grid"
-      ></div>
-
-    </section>
-
-
-    <!-- ================= CATEGORIES ================= -->
-
-    <section class="container section-block">
-
-      <div class="section-head">
-
-        <h2>
-          أقسام المجلة
-        </h2>
-
-      </div>
-
-      <div
-        id="categoryHighlights"
-        class="category-grid"
-      ></div>
-
+      <div id="allContent" class="card-grid"></div>
     </section>
 
   </main>
 
-
   <!-- ================= FOOTER ================= -->
-
   <footer class="site-footer">
-
     <div class="container footer-inner">
 
-      <!-- BRAND -->
-
       <div class="footer-brand">
-
-        <h3>
-          مجَلّتكم
-        </h3>
-
-        <p>
-          صحافة عربية حديثة، تحليل دقيق، ورؤية احترافية.
-        </p>
-
+        <h3>مجَلّتكم</h3>
+        <p>صحافة عربية حديثة، تحليل دقيق، ورؤية احترافية.</p>
       </div>
 
-
-      <!-- QUICK LINKS -->
-
       <div class="footer-column">
-
-        <h4>
-          روابط سريعة
-        </h4>
-
+        <h4>روابط سريعة</h4>
         <ul>
-
-          <li>
-            <a href="index.html">
-              الرئيسية
-            </a>
-          </li>
-
-          <li>
-            <a href="articles.html">
-              المقالات
-            </a>
-          </li>
-
-          <li>
-            <a href="news.html">
-              الأخبار
-            </a>
-          </li>
-
+          <li><a href="index.html">🏠 الرئيسية</a></li>
+          <li><a href="news.html">📰 الأخبار</a></li>
+          <li><a href="articles.html">📚 المقالات</a></li>
         </ul>
-
       </div>
 
-
-      <!-- CATEGORIES -->
-
       <div class="footer-column">
-
-        <h4>
-          الأقسام
-        </h4>
-
+        <h4>الأقسام</h4>
         <ul>
-
-          <li>
-            <a href="articles.html?category=سياسة">
-              السياسة
-            </a>
-          </li>
-
-          <li>
-            <a href="articles.html?category=اقتصاد">
-              الاقتصاد
-            </a>
-          </li>
-
-          <li>
-            <a href="articles.html?category=تكنولوجيا">
-              التكنولوجيا
-            </a>
-          </li>
-
-          <li>
-            <a href="articles.html?category=رياضة">
-              الرياضة
-            </a>
-          </li>
-
+          <li><a href="articles.html?category=سياسة">🏛️ السياسة</a></li>
+          <li><a href="articles.html?category=اقتصاد">💰 الاقتصاد</a></li>
+          <li><a href="articles.html?category=تكنولوجيا">💻 التكنولوجيا</a></li>
+          <li><a href="articles.html?category=رياضة">⚽ الرياضة</a></li>
         </ul>
-
       </div>
 
-
-      <!-- NEWSLETTER -->
-
       <div class="footer-column">
-
-        <h4>
-          النشرة البريدية
-        </h4>
-
-        <p>
-          اشترك ليصلك جديد المجلة.
-        </p>
-
-        <form
-          class="newsletter-form"
-          id="newsletterForm"
-        >
-
-          <input
-            type="email"
-            placeholder="بريدك الإلكتروني"
-            aria-label="البريد الإلكتروني"
-            required
-          >
-
-          <button type="submit">
-            اشترك
-          </button>
-
+        <h4>النشرة البريدية</h4>
+        <p>اشترك ليصلك جديد المجلة.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="بريدك الإلكتروني" aria-label="البريد الإلكتروني" required>
+          <button type="submit">اشترك</button>
         </form>
-
       </div>
 
     </div>
-
-
-    <!-- FOOTER BOTTOM -->
 
     <div class="footer-bottom">
-
       © 2026 مجلّتكم — جميع الحقوق محفوظة
-
     </div>
-
   </footer>
 
-
-  <!-- ================= JAVASCRIPT ================= -->
-
   <script src="js/app.js"></script>
+
+  <script>
+    // =========================================================
+    //  الهيرو مع نقاط ● ● ● ● ● وحركة تلقائية
+    // =========================================================
+
+    let heroIndex = 0;
+    let heroTimer = null;
+    const AUTO_SLIDE_INTERVAL = 5000;
+
+    function renderHero() {
+      const container = document.getElementById('heroFeatured');
+      if (!container || !articles || !articles.length) return;
+
+      const total = articles.length;
+      if (heroIndex >= total) heroIndex = 0;
+      if (heroIndex < 0) heroIndex = total - 1;
+
+      const item = articles[heroIndex];
+
+      let dotsHtml = '';
+      for (let i = 0; i < total; i++) {
+        dotsHtml += `<span class="hero-dot ${i === heroIndex ? 'active' : ''}" onclick="goToHero(${i})"></span>`;
+      }
+
+      container.innerHTML = `
+        <div class="feature-card">
+          <a href="article.html?id=${item.id}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'article');">
+            <img src="${item.image || 'assets/default-news.jpg'}" alt="${item.title}">
+          </a>
+          <div class="feature-content">
+            <span class="eyebrow">${item.category || 'عام'}</span>
+            <h2><a href="article.html?id=${item.id}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'article');">${item.title}</a></h2>
+            <p>${item.excerpt}</p>
+            <div class="meta-row">📅 ${item.date} · ✍️ ${item.author || 'التحرير'}</div>
+            <div class="hero-dots-wrapper">
+              <button class="hero-arrow" onclick="changeHero(-1)">❮</button>
+              <div class="hero-dots">${dotsHtml}</div>
+              <button class="hero-arrow" onclick="changeHero(1)">❯</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function changeHero(direction) {
+      heroIndex += direction;
+      if (heroIndex < 0) heroIndex = articles.length - 1;
+      if (heroIndex >= articles.length) heroIndex = 0;
+      renderHero();
+      resetHeroTimer();
+    }
+
+    function goToHero(index) {
+      heroIndex = index;
+      renderHero();
+      resetHeroTimer();
+    }
+
+    function startHeroTimer() {
+      if (heroTimer) clearInterval(heroTimer);
+      heroTimer = setInterval(function() {
+        heroIndex++;
+        if (heroIndex >= articles.length) heroIndex = 0;
+        renderHero();
+      }, AUTO_SLIDE_INTERVAL);
+    }
+
+    function resetHeroTimer() {
+      if (heroTimer) {
+        clearInterval(heroTimer);
+        startHeroTimer();
+      }
+    }
+
+    // =========================================================
+    //  عرض المحتوى (مقالات + أخبار معاً)
+    // =========================================================
+
+    function renderAllContent() {
+      const container = document.getElementById('allContent');
+      if (!container) return;
+
+      let items = [];
+
+      articles.forEach(function(item, index) {
+        if (index !== heroIndex) {
+          items.push({
+            ...item,
+            type: 'article',
+            category: item.category || 'عام',
+            author: item.author || 'التحرير'
+          });
+        }
+      });
+
+      news.forEach(function(item) {
+        items.push({
+          ...item,
+          type: 'news',
+          category: item.category || 'عام'
+        });
+      });
+
+      items.sort(function(a, b) {
+        return new Date(b.date) - new Date(a.date);
+      });
+
+      if (!items.length) {
+        container.innerHTML = '<p class="empty-message">لا يوجد محتوى لعرضه</p>';
+        return;
+      }
+
+      container.innerHTML = items.map(function(item) {
+        const isFav = isFavorite(item.id);
+        const url = item.type === 'article' ? `article.html?id=${item.id}` : `news.html?id=${item.id}`;
+        const onClick = item.type === 'article'
+          ? `saveLastRead(${item.id}); addToHistory(${item.id}, 'article');`
+          : `saveLastNews(${item.id}); addToHistory(${item.id}, 'news');`;
+        const label = item.type === 'article' ? '📄 مقال' : '📰 خبر';
+
+        return `
+          <div class="article-card mirror-shine">
+            <a href="${url}" onclick="${onClick}" aria-label="${item.title}">
+              <img src="${item.image || 'assets/default-news.jpg'}" alt="${item.title}" loading="lazy">
+            </a>
+            <div class="article-body">
+              <span class="eyebrow">${item.category} · ${label}</span>
+              <div class="meta-row">
+                <span>📅 ${item.date}</span>
+                ${item.author ? `<span>✍️ ${item.author}</span>` : ''}
+                ${item.time ? `<span>🕐 ${item.time}</span>` : ''}
+              </div>
+              <h3><a href="${url}" onclick="${onClick}">${item.title}</a></h3>
+              <p>${item.excerpt}</p>
+              <div class="card-actions">
+                <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${item.id}"
+                        onclick="toggleFavorite(${item.id}); this.classList.toggle('active'); this.innerHTML = isFavorite(${item.id}) ? '❤️' : '🤍';">
+                  ${isFav ? '❤️' : '🤍'}
+                </button>
+                <a class="read-more" href="${url}" onclick="${onClick}">
+                  ${item.type === 'article' ? 'قراءة المقال' : 'قراءة الخبر'} ←
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // =========================================================
+    //  دوال مساعدة
+    // =========================================================
+
+    function saveLastRead(id) {
+      localStorage.setItem('lastReadArticle', String(id));
+    }
+
+    function saveLastNews(id) {
+      localStorage.setItem('lastReadNews', String(id));
+    }
+
+    function addToHistory(id, type) {
+      let history = JSON.parse(localStorage.getItem('history')) || [];
+      history = history.filter(function(item) { return item.id !== id; });
+      history.unshift({ id: id, type: type, date: new Date().toISOString() });
+      if (history.length > 20) history = history.slice(0, 20);
+      localStorage.setItem('history', JSON.stringify(history));
+    }
+
+    function toggleFavorite(id) {
+      let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      const index = favorites.indexOf(id);
+      if (index > -1) {
+        favorites.splice(index, 1);
+      } else {
+        favorites.push(id);
+      }
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+
+    function isFavorite(id) {
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      return favorites.includes(id);
+    }
+
+    // =========================================================
+    //  التهيئة
+    // =========================================================
+
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof articles === 'undefined' || typeof news === 'undefined') {
+        console.error('❌ البيانات غير متوفرة');
+        return;
+      }
+
+      renderHero();
+      renderAllContent();
+      startHeroTimer();
+
+      const hero = document.getElementById('heroFeatured');
+      if (hero) {
+        hero.addEventListener('mouseenter', function() {
+          if (heroTimer) clearInterval(heroTimer);
+        });
+        hero.addEventListener('mouseleave', function() {
+          startHeroTimer();
+        });
+      }
+
+      console.log('✅ تم تحميل الصفحة الرئيسية مع نقاط ● ● ● ● ●');
+    });
+  </script>
 
 </body>
 </html>
