@@ -4,25 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <meta name="googlebot" content="index, follow"> <meta name="google-site-verification" content="KdVR58y8qa2wPHxOkaNOIpfJPZEGpKk4mzBOlDnC3z4" />
+  <meta name="googlebot" content="index, follow">
+  <meta name="google-site-verification" content="KdVR58y8qa2wPHxOkaNOIpfJPZEGpKk4mzBOlDnC3z4" />
   <meta name="description" content="مجَلّتكم - مجلة عربية حديثة تتابع السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم.">
   <meta name="theme-color" content="#0f4c81">
   <title>مجَلّتكم | مجلة عربية</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
+  <!-- ===== Open Graph (Facebook, WhatsApp, LinkedIn) ===== -->
+<meta property="og:title" content="مجَلّتكم - مجلة عربية حديثة" />
+<meta property="og:description" content="مجَلّتكم - مجلة عربية حديثة تتابع السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم." />
+<meta property="og:image" content="https://oussam1233.github.io/majalati/assets/og-image.jpg" />
+<meta property="og:url" content="https://oussam1233.github.io/majalati/" />
+<meta property="og:type" content="website" />
+
+<!-- ===== Twitter Card ===== -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="مجَلّتكم - مجلة عربية حديثة" />
+<meta name="twitter:description" content="مجَلّتكم - مجلة عربية حديثة تتابع السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم." />
+<meta name="twitter:image" content="https://oussam1233.github.io/majalati/assets/og-image.jpg" />
 </head>
 
 <body data-page="home">
 
+  <!-- ================= HEADER ================= -->
   <header class="site-header">
     <div class="container header-inner">
 
-      <a href="index.html" class="brand">
+      <a href="index.html" class="brand" aria-label="الصفحة الرئيسية">
         <span class="brand-mark">م</span>
         <span>مجَلّتكم</span>
       </a>
 
-      <nav class="main-nav">
+      <nav class="main-nav" aria-label="التنقل الرئيسي">
         <ul class="nav-list">
           <li><a href="index.html" class="nav-link active">🏠 الرئيسية</a></li>
           <li><a href="news.html" class="nav-link">📰 الأخبار</a></li>
@@ -32,30 +46,46 @@
 
       <div class="header-tools">
         <div class="search-shell">
-          <input id="searchInput" type="search" placeholder="ابحث عن خبر أو مقال..." autocomplete="off">
-          <div id="searchDropdown" class="search-dropdown"></div>
+          <input id="searchInput" type="search" placeholder="ابحث عن خبر أو مقال..." aria-label="البحث" autocomplete="off">
+          <div id="searchDropdown" class="search-dropdown" aria-live="polite"></div>
         </div>
-        <button id="themeToggle" class="theme-toggle">🌙</button>
-        <button class="menu-toggle">☰</button>
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="تبديل الوضع">🌙</button>
+        <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
       </div>
 
     </div>
   </header>
 
+  <!-- ================= MAIN ================= -->
   <main>
+
+    <!-- ===== HERO ===== -->
     <section class="hero-wrap container">
       <div class="featured-badge">⭐ المقال المميز</div>
-      <div id="heroFeatured" class="hero-featured"></div>
+      <div id="heroFeatured" class="hero-featured" aria-live="polite"></div>
     </section>
 
+    <!-- ===== أحدث المقالات ===== -->
     <section class="container section-block">
       <div class="section-head">
-        <h2>📖 أحدث المحتوى</h2>
+        <h2>📚 أحدث المقالات</h2>
+        <a href="articles.html">عرض الكل ←</a>
       </div>
-      <div id="allContent" class="card-grid"></div>
+      <div id="latestArticles" class="card-grid"></div>
     </section>
+
+    <!-- ===== آخر الأخبار ===== -->
+    <section class="container section-block">
+      <div class="section-head">
+        <h2>📰 آخر الأخبار</h2>
+        <a href="news.html">عرض الكل ←</a>
+      </div>
+      <div id="latestNews" class="card-grid news-grid"></div>
+    </section>
+
   </main>
 
+  <!-- ================= FOOTER ================= -->
   <footer class="site-footer">
     <div class="container footer-inner">
 
@@ -87,7 +117,7 @@
         <h4>النشرة البريدية</h4>
         <p>اشترك ليصلك جديد المجلة.</p>
         <form class="newsletter-form" id="newsletterForm">
-          <input type="email" placeholder="بريدك الإلكتروني" required>
+          <input type="email" placeholder="بريدك الإلكتروني" aria-label="البريد الإلكتروني" required>
           <button type="submit">اشترك</button>
         </form>
       </div>
@@ -102,6 +132,10 @@
   <script src="js/app.js"></script>
 
   <script>
+    // =========================================================
+    //  الهيرو مع نقاط ● ● ● ● ● وحركة تلقائية
+    // =========================================================
+
     let heroIndex = 0;
     let heroTimer = null;
     const AUTO_SLIDE_INTERVAL = 5000;
@@ -171,69 +205,48 @@
       }
     }
 
-    function renderAllContent() {
-      const container = document.getElementById('allContent');
+    // =========================================================
+    //  عرض أحدث المقالات (مع استبعاد المقال المعروض في الهيرو)
+    // =========================================================
+
+    function renderLatestArticles() {
+      const container = document.getElementById('latestArticles');
       if (!container) return;
 
-      let items = [];
-
-      articles.forEach(function(item, index) {
-        if (index !== heroIndex) {
-          items.push({
-            ...item,
-            type: 'article',
-            category: item.category || 'عام',
-            author: item.author || 'التحرير'
-          });
-        }
-      });
-
-      news.forEach(function(item) {
-        items.push({
-          ...item,
-          type: 'news',
-          category: item.category || 'عام'
-        });
-      });
-
-      items.sort(function(a, b) {
-        return new Date(b.date) - new Date(a.date);
-      });
+      // استبعاد المقال المعروض في الهيرو
+      const items = articles.filter(function(item, index) {
+        return index !== heroIndex;
+      }).slice(0, 3);
 
       if (!items.length) {
-        container.innerHTML = '<p class="empty-message">لا يوجد محتوى لعرضه</p>';
+        container.innerHTML = '<p class="empty-message">لا توجد مقالات</p>';
         return;
       }
 
       container.innerHTML = items.map(function(item) {
         const isFav = isFavorite(item.id);
-        const url = item.type === 'article' ? `article.html?id=${item.id}` : `news.html?id=${item.id}`;
-        const onClick = item.type === 'article'
-          ? `saveLastRead(${item.id}); addToHistory(${item.id}, 'article');`
-          : `saveLastNews(${item.id}); addToHistory(${item.id}, 'news');`;
-        const label = item.type === 'article' ? '📄 مقال' : '📰 خبر';
+        const url = `article.html?id=${item.id}`;
 
         return `
           <div class="article-card mirror-shine">
-            <a href="${url}" onclick="${onClick}" aria-label="${item.title}">
+            <a href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'article');" aria-label="${item.title}">
               <img src="${item.image || 'assets/default-news.jpg'}" alt="${item.title}" loading="lazy">
             </a>
             <div class="article-body">
-              <span class="eyebrow">${item.category} · ${label}</span>
+              <span class="eyebrow">${item.category || 'عام'}</span>
               <div class="meta-row">
                 <span>📅 ${item.date}</span>
-                ${item.author ? `<span>✍️ ${item.author}</span>` : ''}
-                ${item.time ? `<span>🕐 ${item.time}</span>` : ''}
+                <span>✍️ ${item.author || 'التحرير'}</span>
               </div>
-              <h3><a href="${url}" onclick="${onClick}">${item.title}</a></h3>
+              <h3><a href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'article');">${item.title}</a></h3>
               <p>${item.excerpt}</p>
               <div class="card-actions">
                 <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${item.id}"
                         onclick="toggleFavorite(${item.id}); this.classList.toggle('active'); this.innerHTML = isFavorite(${item.id}) ? '❤️' : '🤍';">
                   ${isFav ? '❤️' : '🤍'}
                 </button>
-                <a class="read-more" href="${url}" onclick="${onClick}">
-                  ${item.type === 'article' ? 'قراءة المقال' : 'قراءة الخبر'} ←
+                <a class="read-more" href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'article');">
+                  قراءة المقال ←
                 </a>
               </div>
             </div>
@@ -242,12 +255,59 @@
       }).join('');
     }
 
-    function saveLastRead(id) {
-      localStorage.setItem('lastReadArticle', String(id));
+    // =========================================================
+    //  عرض آخر الأخبار
+    // =========================================================
+
+    function renderLatestNews() {
+      const container = document.getElementById('latestNews');
+      if (!container) return;
+
+      const items = news.slice(0, 3);
+
+      if (!items.length) {
+        container.innerHTML = '<p class="empty-message">لا توجد أخبار</p>';
+        return;
+      }
+
+      container.innerHTML = items.map(function(item) {
+        const isFav = isFavorite(item.id);
+        const url = `news-article.html?id=${item.id}`;
+
+        return `
+          <div class="article-card mirror-shine">
+            <a href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'news');" aria-label="${item.title}">
+              <img src="${item.image || 'assets/default-news.jpg'}" alt="${item.title}" loading="lazy">
+            </a>
+            <div class="article-body">
+              <span class="eyebrow">${item.category || 'عام'}</span>
+              <div class="meta-row">
+                <span>📅 ${item.date}</span>
+                ${item.time ? `<span>🕐 ${item.time}</span>` : ''}
+              </div>
+              <h3><a href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'news');">${item.title}</a></h3>
+              <p>${item.excerpt}</p>
+              <div class="card-actions">
+                <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${item.id}"
+                        onclick="toggleFavorite(${item.id}); this.classList.toggle('active'); this.innerHTML = isFavorite(${item.id}) ? '❤️' : '🤍';">
+                  ${isFav ? '❤️' : '🤍'}
+                </button>
+                <a class="read-more" href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'news');">
+                  قراءة الخبر ←
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
 
-    function saveLastNews(id) {
-      localStorage.setItem('lastReadNews', String(id));
+    // =========================================================
+    //  دوال مساعدة
+    // =========================================================
+
+    function saveLastRead(id) {
+      localStorage.setItem('lastReadArticle', String(id));
     }
 
     function addToHistory(id, type) {
@@ -274,6 +334,10 @@
       return favorites.includes(id);
     }
 
+    // =========================================================
+    //  التهيئة
+    // =========================================================
+
     document.addEventListener('DOMContentLoaded', function() {
       if (typeof articles === 'undefined' || typeof news === 'undefined') {
         console.error('❌ البيانات غير متوفرة');
@@ -281,7 +345,8 @@
       }
 
       renderHero();
-      renderAllContent();
+      renderLatestArticles();
+      renderLatestNews();
       startHeroTimer();
 
       const hero = document.getElementById('heroFeatured');
@@ -294,7 +359,7 @@
         });
       }
 
-      console.log('✅ تم تحميل الصفحة الرئيسية');
+      console.log('✅ تم تحميل الصفحة الرئيسية - مقالات وأخبار منفصلة');
     });
   </script>
 

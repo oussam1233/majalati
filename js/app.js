@@ -346,7 +346,7 @@ function setupSearch() {
 ========================================================= */
 
 function createCard(item, type) {
-  const url = type === "article" ? `article.html?id=${item.id}` : `news.html?id=${item.id}`;
+  const url = type === "article" ? `article.html?id=${item.id}` : `news-article.html?id=${item.id}`;
   const timeHtml = item.time ? `<span>🕐 ${escapeHTML(item.time)}</span>` : "";
   const authorHtml = type === "article" ? `<span>✍️ ${escapeHTML(item.author || "التحرير")}</span>` : "";
 
@@ -586,7 +586,7 @@ function getFilteredNews() {
 }
 
 function renderNewsPage() {
-  const container = document.getElementById("newsList");
+  const container = document.getElementById("newsGrid");
   if (!container) return;
 
   const empty = document.getElementById("newsEmpty");
