@@ -3,7 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صورة OG - مجَلّتكم</title>
+  <meta property="og:title" content="مجَلّتكم | أخبار عربية عميقة">
+  <meta property="og:description" content="تابع آخر الأخبار والتحليلات والآراء من منظور عربي حديث ومتميز.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="مجَلّتكم">
+  <meta property="og:image" content="assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="مجَلّتكم - أخبار عربية عميقة ومباشرة">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="مجَلّتكم | أخبار عربية عميقة">
+  <meta name="twitter:description" content="تابع آخر الأخبار والتحليلات والآراء من منظور عربي حديث ومتميز.">
+  <meta name="twitter:image" content="assets/og-image.png">
+  <meta name="twitter:image:alt" content="مجَلّتكم - أخبار عربية عميقة ومباشرة">
+  <title>مجَلّتكم | أخبار عربية عميقة</title>
   <style>
     * {
       margin: 0;
@@ -16,152 +29,182 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background: #0f4c81;
+      background:
+        radial-gradient(circle at top, rgba(255, 200, 87, 0.2), transparent 30%),
+        linear-gradient(135deg, #071b2d 0%, #0a2947 35%, #102f53 100%);
       font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
     }
 
     .og-card {
       width: 1200px;
       height: 630px;
-      background: linear-gradient(135deg, #0f4c81 0%, #0b3b66 40%, #f59e0b 100%);
-      border-radius: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      border-radius: 26px;
+      background: linear-gradient(135deg, #0a1f33 0%, #0e2e4c 100%);
+      border: 1px solid rgba(255, 211, 107, 0.2);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
     }
 
     .og-card::before {
-      content: '';
+      content: "";
       position: absolute;
-      top: -200px;
-      right: -200px;
-      width: 600px;
-      height: 600px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 50%;
-    }
-
-    .og-card::after {
-      content: '';
-      position: absolute;
-      bottom: -150px;
-      left: -150px;
-      width: 400px;
-      height: 400px;
-      background: rgba(255,255,255,0.03);
-      border-radius: 50%;
-    }
-
-    .og-logo {
-      font-size: 5rem;
-      font-weight: 900;
-      color: white;
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .og-logo .mark {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, #f59e0b, #ffdd57);
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      color: #0f4c81;
-      font-weight: 900;
-      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
-    }
-
-    .og-title {
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: white;
-      text-align: center;
-      margin: 15px 0;
-      position: relative;
-      z-index: 1;
-      line-height: 1.3;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-
-    .og-title span {
-      color: #f59e0b;
-    }
-
-    .og-description {
-      font-size: 1.4rem;
-      color: rgba(255,255,255,0.85);
-      text-align: center;
-      max-width: 700px;
-      position: relative;
-      z-index: 1;
-      line-height: 1.8;
-      margin-top: 10px;
-    }
-
-    .og-divider {
-      width: 100px;
-      height: 4px;
-      background: linear-gradient(90deg, #f59e0b, transparent);
-      border-radius: 4px;
-      margin: 15px 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .og-footer {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-top: 20px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .og-footer .icon {
-      font-size: 1.8rem;
-      color: rgba(255,255,255,0.5);
-    }
-
-    .og-footer .text {
-      color: rgba(255,255,255,0.6);
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-    }
-
-    .og-url {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255,255,255,0.3);
-      font-size: 0.9rem;
-      font-weight: 300;
-      letter-spacing: 2px;
+      inset: 22px;
+      border: 1px solid rgba(255, 211, 107, 0.14);
+      border-radius: 18px;
       z-index: 1;
     }
 
     .og-pattern {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: 
-        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 50%);
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255, 211, 107, 0.08), transparent 30%),
+        radial-gradient(circle at 18% 75%, rgba(255,255,255,0.05) 0%, transparent 30%),
+        radial-gradient(circle at 82% 20%, rgba(255,255,255,0.04) 0%, transparent 35%);
       z-index: 0;
+    }
+
+    .gold-bar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 360px;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(255, 196, 63, 0.12), rgba(255, 196, 63, 0.04));
+      transform: skewX(-18deg) translateX(80px);
+      z-index: 0;
+    }
+
+    .og-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 70px 85px 85px;
+    }
+
+    .og-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 34px;
+    }
+
+    .og-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      color: #f7f8fa;
+      font-size: 2.7rem;
+      font-weight: 900;
+    }
+
+    .og-brand .mark {
+      width: 82px;
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #f9d36d 0%, #f3b52b 100%);
+      color: #112843;
+      font-size: 2.5rem;
+      box-shadow: 0 12px 30px rgba(243, 181, 43, 0.35);
+    }
+
+    .og-badge {
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 208, 96, 0.35);
+      background: rgba(255, 208, 96, 0.08);
+      color: #f6d88e;
+      font-size: 0.92rem;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+
+    .og-title {
+      font-size: 4rem;
+      line-height: 1.2;
+      font-weight: 900;
+      color: #fff;
+      margin: 0 0 16px;
+      max-width: 720px;
+      text-shadow: 0 6px 26px rgba(0, 0, 0, 0.18);
+    }
+
+    .og-title .accent {
+      color: #f5cf6d;
+    }
+
+    .og-subtitle {
+      font-size: 1.45rem;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 26px;
+      letter-spacing: 0.5px;
+    }
+
+    .og-tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+
+    .og-tag {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .og-divider {
+      width: 150px;
+      height: 4px;
+      background: linear-gradient(90deg, #f7d46f 0%, rgba(247,212,111,0.15) 100%);
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+
+    .og-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .og-footer .left {
+      color: rgba(255,255,255,0.75);
+      font-size: 1rem;
+      letter-spacing: 1.2px;
+    }
+
+    .og-footer .right {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #f9d36d;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
+
+    .og-footer .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #f9d36d;
+      box-shadow: 0 0 10px rgba(249, 211, 109, 0.8);
     }
   </style>
 </head>
@@ -169,30 +212,40 @@
 
   <div class="og-card">
     <div class="og-pattern"></div>
+    <div class="gold-bar"></div>
 
-    <div class="og-logo">
-      <div class="mark">م</div>
-      <span>مجَلّتكم</span>
+    <div class="og-content">
+      <div class="og-topline">
+        <div class="og-brand">
+          <div class="mark">م</div>
+          <span>مجَلّتكم</span>
+        </div>
+
+        <div class="og-badge">آخر الأخبار</div>
+      </div>
+
+      <h1 class="og-title">أخبار عربية <span class="accent">عميقة</span> ومباشرة</h1>
+
+      <div class="og-subtitle">رؤية • تحليل • متابعة</div>
+
+      <div class="og-tags">
+        <span class="og-tag">سياسة</span>
+        <span class="og-tag">اقتصاد</span>
+        <span class="og-tag">تكنولوجيا</span>
+        <span class="og-tag">رياضة</span>
+        <span class="og-tag">مجتمع</span>
+      </div>
+
+      <div class="og-divider"></div>
+
+      <div class="og-footer">
+        <div class="left">majalati.com</div>
+        <div class="right">
+          <span class="dot"></span>
+          <span>صحافة عربية</span>
+        </div>
+      </div>
     </div>
-
-    <div class="og-title">
-      مجلة عربية <span>حديثة</span>
-    </div>
-
-    <div class="og-divider"></div>
-
-    <div class="og-description">
-      السياسة · الاقتصاد · التكنولوجيا · المجتمع · الرياضة · العالم
-    </div>
-
-    <div class="og-footer">
-      <span class="icon">📰</span>
-      <span class="text">آخر الأخبار والمقالات</span>
-      <span class="icon">📚</span>
-      <span class="text">تحليلات عميقة</span>
-    </div>
-
-    <div class="og-url">majalati.com</div>
   </div>
 
 </body>

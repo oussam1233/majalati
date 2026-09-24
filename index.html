@@ -11,18 +11,23 @@
   <title>مجَلّتكم | مجلة عربية</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
-  <!-- ===== Open Graph (Facebook, WhatsApp, LinkedIn) ===== -->
-<meta property="og:title" content="مجَلّتكم - مجلة عربية حديثة" />
-<meta property="og:description" content="مجَلّتكم - مجلة عربية حديثة تتابع السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم." />
-<meta property="og:image" content="https://oussam1233.github.io/majalati/assets/og-image.jpg" />
-<meta property="og:url" content="https://oussam1233.github.io/majalati/" />
-<meta property="og:type" content="website" />
 
-<!-- ===== Twitter Card ===== -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="مجَلّتكم - مجلة عربية حديثة" />
-<meta name="twitter:description" content="مجَلّتكم - مجلة عربية حديثة تتابع السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم." />
-<meta name="twitter:image" content="https://oussam1233.github.io/majalati/assets/og-image.jpg" />
+  <!-- ===== Open Graph ===== -->
+  <meta property="og:title" content="مجَلّتكم - مجلة عربية حديثة" />
+  <meta property="og:description" content="مجَلّتكم - مجلة عربية حديثة تتابع السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم." />
+  <meta property="og:image" content="https://oussam1233.github.io/majalati/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://oussam1233.github.io/majalati/" />
+  <meta property="og:type" content="website" />
+
+  <!-- ===== Twitter Card ===== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="مجَلّتكم - مجلة عربية حديثة" />
+  <meta name="twitter:description" content="مجَلّتكم - مجلة عربية حديثة تتابع السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم." />
+  <meta name="twitter:image" content="https://oussam1233.github.io/majalati/assets/og-image.png" />
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6010492939154920" crossorigin="anonymous"></script>
 </head>
 
 <body data-page="home">
@@ -100,6 +105,9 @@
           <li><a href="index.html">🏠 الرئيسية</a></li>
           <li><a href="news.html">📰 الأخبار</a></li>
           <li><a href="articles.html">📚 المقالات</a></li>
+          <li><a href="about.html">ℹ️ من نحن</a></li>
+          <li><a href="contact.html">📧 اتصل بنا</a></li>
+          <li><a href="privacy.html">🔒 الخصوصية</a></li>
         </ul>
       </div>
 
@@ -129,239 +137,20 @@
     </div>
   </footer>
 
-  <script src="js/app.js"></script>
 
-  <script>
-    // =========================================================
-    //  الهيرو مع نقاط ● ● ● ● ● وحركة تلقائية
-    // =========================================================
+<script src="data/categories.js"></script>
+<script src="data/articles.js"></script>
+<script src="data/news.js"></script>
 
-    let heroIndex = 0;
-    let heroTimer = null;
-    const AUTO_SLIDE_INTERVAL = 5000;
 
-    function renderHero() {
-      const container = document.getElementById('heroFeatured');
-      if (!container || !articles || !articles.length) return;
+<script src="js/search.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/sharing.js"></script>
 
-      const total = articles.length;
-      if (heroIndex >= total) heroIndex = 0;
-      if (heroIndex < 0) heroIndex = total - 1;
 
-      const item = articles[heroIndex];
+<script src="js/app.js"></script>
 
-      let dotsHtml = '';
-      for (let i = 0; i < total; i++) {
-        dotsHtml += `<span class="hero-dot ${i === heroIndex ? 'active' : ''}" onclick="goToHero(${i})"></span>`;
-      }
 
-      container.innerHTML = `
-        <div class="feature-card">
-          <a href="article.html?id=${item.id}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'article');">
-            <img src="${item.image || 'assets/default-news.jpg'}" alt="${item.title}">
-          </a>
-          <div class="feature-content">
-            <span class="eyebrow">${item.category || 'عام'}</span>
-            <h2><a href="article.html?id=${item.id}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'article');">${item.title}</a></h2>
-            <p>${item.excerpt}</p>
-            <div class="meta-row">📅 ${item.date} · ✍️ ${item.author || 'التحرير'}</div>
-            <div class="hero-dots-wrapper">
-              <button class="hero-arrow" onclick="changeHero(-1)">❮</button>
-              <div class="hero-dots">${dotsHtml}</div>
-              <button class="hero-arrow" onclick="changeHero(1)">❯</button>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    function changeHero(direction) {
-      heroIndex += direction;
-      if (heroIndex < 0) heroIndex = articles.length - 1;
-      if (heroIndex >= articles.length) heroIndex = 0;
-      renderHero();
-      resetHeroTimer();
-    }
-
-    function goToHero(index) {
-      heroIndex = index;
-      renderHero();
-      resetHeroTimer();
-    }
-
-    function startHeroTimer() {
-      if (heroTimer) clearInterval(heroTimer);
-      heroTimer = setInterval(function() {
-        heroIndex++;
-        if (heroIndex >= articles.length) heroIndex = 0;
-        renderHero();
-      }, AUTO_SLIDE_INTERVAL);
-    }
-
-    function resetHeroTimer() {
-      if (heroTimer) {
-        clearInterval(heroTimer);
-        startHeroTimer();
-      }
-    }
-
-    // =========================================================
-    //  عرض أحدث المقالات (مع استبعاد المقال المعروض في الهيرو)
-    // =========================================================
-
-    function renderLatestArticles() {
-      const container = document.getElementById('latestArticles');
-      if (!container) return;
-
-      // استبعاد المقال المعروض في الهيرو
-      const items = articles.filter(function(item, index) {
-        return index !== heroIndex;
-      }).slice(0, 3);
-
-      if (!items.length) {
-        container.innerHTML = '<p class="empty-message">لا توجد مقالات</p>';
-        return;
-      }
-
-      container.innerHTML = items.map(function(item) {
-        const isFav = isFavorite(item.id);
-        const url = `article.html?id=${item.id}`;
-
-        return `
-          <div class="article-card mirror-shine">
-            <a href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'article');" aria-label="${item.title}">
-              <img src="${item.image || 'assets/default-news.jpg'}" alt="${item.title}" loading="lazy">
-            </a>
-            <div class="article-body">
-              <span class="eyebrow">${item.category || 'عام'}</span>
-              <div class="meta-row">
-                <span>📅 ${item.date}</span>
-                <span>✍️ ${item.author || 'التحرير'}</span>
-              </div>
-              <h3><a href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'article');">${item.title}</a></h3>
-              <p>${item.excerpt}</p>
-              <div class="card-actions">
-                <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${item.id}"
-                        onclick="toggleFavorite(${item.id}); this.classList.toggle('active'); this.innerHTML = isFavorite(${item.id}) ? '❤️' : '🤍';">
-                  ${isFav ? '❤️' : '🤍'}
-                </button>
-                <a class="read-more" href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'article');">
-                  قراءة المقال ←
-                </a>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    // =========================================================
-    //  عرض آخر الأخبار
-    // =========================================================
-
-    function renderLatestNews() {
-      const container = document.getElementById('latestNews');
-      if (!container) return;
-
-      const items = news.slice(0, 3);
-
-      if (!items.length) {
-        container.innerHTML = '<p class="empty-message">لا توجد أخبار</p>';
-        return;
-      }
-
-      container.innerHTML = items.map(function(item) {
-        const isFav = isFavorite(item.id);
-        const url = `news-article.html?id=${item.id}`;
-
-        return `
-          <div class="article-card mirror-shine">
-            <a href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'news');" aria-label="${item.title}">
-              <img src="${item.image || 'assets/default-news.jpg'}" alt="${item.title}" loading="lazy">
-            </a>
-            <div class="article-body">
-              <span class="eyebrow">${item.category || 'عام'}</span>
-              <div class="meta-row">
-                <span>📅 ${item.date}</span>
-                ${item.time ? `<span>🕐 ${item.time}</span>` : ''}
-              </div>
-              <h3><a href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'news');">${item.title}</a></h3>
-              <p>${item.excerpt}</p>
-              <div class="card-actions">
-                <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${item.id}"
-                        onclick="toggleFavorite(${item.id}); this.classList.toggle('active'); this.innerHTML = isFavorite(${item.id}) ? '❤️' : '🤍';">
-                  ${isFav ? '❤️' : '🤍'}
-                </button>
-                <a class="read-more" href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'news');">
-                  قراءة الخبر ←
-                </a>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    // =========================================================
-    //  دوال مساعدة
-    // =========================================================
-
-    function saveLastRead(id) {
-      localStorage.setItem('lastReadArticle', String(id));
-    }
-
-    function addToHistory(id, type) {
-      let history = JSON.parse(localStorage.getItem('history')) || [];
-      history = history.filter(function(item) { return item.id !== id; });
-      history.unshift({ id: id, type: type, date: new Date().toISOString() });
-      if (history.length > 20) history = history.slice(0, 20);
-      localStorage.setItem('history', JSON.stringify(history));
-    }
-
-    function toggleFavorite(id) {
-      let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      const index = favorites.indexOf(id);
-      if (index > -1) {
-        favorites.splice(index, 1);
-      } else {
-        favorites.push(id);
-      }
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-    }
-
-    function isFavorite(id) {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      return favorites.includes(id);
-    }
-
-    // =========================================================
-    //  التهيئة
-    // =========================================================
-
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof articles === 'undefined' || typeof news === 'undefined') {
-        console.error('❌ البيانات غير متوفرة');
-        return;
-      }
-
-      renderHero();
-      renderLatestArticles();
-      renderLatestNews();
-      startHeroTimer();
-
-      const hero = document.getElementById('heroFeatured');
-      if (hero) {
-        hero.addEventListener('mouseenter', function() {
-          if (heroTimer) clearInterval(heroTimer);
-        });
-        hero.addEventListener('mouseleave', function() {
-          startHeroTimer();
-        });
-      }
-
-      console.log('✅ تم تحميل الصفحة الرئيسية - مقالات وأخبار منفصلة');
-    });
-  </script>
-
+<script src="js/pagination.js"></script>
 </body>
 </html>

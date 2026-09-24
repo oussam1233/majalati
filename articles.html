@@ -12,7 +12,7 @@
 <!-- ===== Open Graph (Facebook, WhatsApp, LinkedIn) ===== -->
 <meta property="og:title" content="مجَلّتكم - مجلة عربية حديثة" />
 <meta property="og:description" content="مجَلّتكم - مجلة عربية حديثة تتابع السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم." />
-<meta property="og:image" content="https://oussam1233.github.io/majalati/assets/og-image.jpg" />
+<meta property="og:image" content="https://oussam1233.github.io/majalati/assets/og-image.png" />
 <meta property="og:url" content="https://oussam1233.github.io/majalati/" />
 <meta property="og:type" content="website" />
 
@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="مجَلّتكم - مجلة عربية حديثة" />
 <meta name="twitter:description" content="مجَلّتكم - مجلة عربية حديثة تتابع السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم." />
-<meta name="twitter:image" content="https://oussam1233.github.io/majalati/assets/og-image.jpg" />
+<meta name="twitter:image" content="https://oussam1233.github.io/majalati/assets/og-image.png" />
   <meta
     name="description"
     content="اكتشف جميع مقالات مجلّتكم في السياسة والاقتصاد والتكنولوجيا والمجتمع والرياضة والعالم والذكاء الاصطناعي."
@@ -30,6 +30,8 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/styles.css" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6010492939154920" crossorigin="anonymous"></script>
+
 </head>
 
 <body data-page="articles">
@@ -216,6 +218,24 @@
           </li>
 
           <li>
+            <a href="about.html">
+              من نحن
+            </a>
+          </li>
+
+          <li>
+            <a href="contact.html">
+              اتصل بنا
+            </a>
+          </li>
+
+          <li>
+            <a href="privacy.html">
+              الخصوصية
+            </a>
+          </li>
+
+          <li>
             <a href="news.html">
               الأخبار
             </a>
@@ -314,149 +334,20 @@
   </footer>
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
 
-  <script src="js/app.js"></script>
+<script src="data/categories.js"></script>
+<script src="data/articles.js"></script>
+<script src="data/news.js"></script>
 
-</body>
-=======
->>>>>>> bed31702f88d0f405f04a7b240d272b5040a4d84
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow">
-  <meta name="description" content="جميع مقالات مجلّتكم العربية.">
-  <meta name="theme-color" content="#0f4c81">
-  <title>المقالات | مجلّتكم</title>
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
 
-<body data-page="articles">
+<script src="js/search.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/sharing.js"></script>
 
-<header class="site-header">
-  <div class="container header-inner">
-
-    <a href="index.html" class="brand" aria-label="الصفحة الرئيسية">
-      <span class="brand-mark">م</span>
-      <span>مجَلّتكم</span>
-    </a>
-
-    <nav class="main-nav" aria-label="التنقل الرئيسي"></nav>
-
-    <div class="header-tools">
-      <div class="search-shell">
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="ابحث عن خبر أو مقال..."
-          aria-label="البحث"
-          autocomplete="off"
-        >
-        <div id="searchDropdown" class="search-dropdown"></div>
-      </div>
-
-      <button
-        id="themeToggle"
-        class="theme-toggle"
-        type="button"
-        aria-label="تبديل الوضع"
-      >🌙</button>
-
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-label="فتح القائمة"
-        aria-expanded="false"
-      >☰</button>
-    </div>
-
-  </div>
-</header>
-
-<main class="page-shell">
-
-  <div class="container page-header">
-    <span class="eyebrow">📚 مكتبة المجلة</span>
-    <h1>المقالات</h1>
-    <p class="page-description">
-      مجموعة من المقالات والتحليلات المتنوعة في السياسة والاقتصاد
-      والتكنولوجيا والرياضة والمجتمع والعالم.
-    </p>
-  </div>
-
-  <section class="container">
-
-    <div class="category-filter" id="articleCategoryFilter"></div>
-
-    <div class="section-head">
-      <h2>جميع المقالات</h2>
-      <span class="news-count" id="articlesCount"></span>
-    </div>
-
-    <div id="articlesGrid" class="card-grid news-grid"></div>
-
-    <div id="articlesPagination" class="pagination"></div>
-
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-
-    <div class="footer-brand">
-      <h3>مجَلّتكم</h3>
-      <p>
-        صحافة عربية حديثة، تحليل دقيق، ورؤية احترافية.
-      </p>
-    </div>
-
-    <div class="footer-column">
-      <h4>روابط سريعة</h4>
-      <ul>
-        <li><a href="index.html">الرئيسية</a></li>
-        <li><a href="articles.html">المقالات</a></li>
-        <li><a href="news.html">الأخبار</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h4>الأقسام</h4>
-      <ul>
-        <li><a href="articles.html?category=سياسة">السياسة</a></li>
-        <li><a href="articles.html?category=اقتصاد">الاقتصاد</a></li>
-        <li><a href="articles.html?category=تكنولوجيا">التكنولوجيا</a></li>
-        <li><a href="articles.html?category=رياضة">الرياضة</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-column">
-      <h4>النشرة البريدية</h4>
-      <p>اشترك ليصلك جديد المجلة.</p>
-
-      <form class="newsletter-form" id="newsletterForm">
-        <input
-          type="email"
-          placeholder="بريدك الإلكتروني"
-          aria-label="البريد الإلكتروني"
-          required
-        >
-        <button type="submit">اشترك</button>
-      </form>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 مجلّتكم — جميع الحقوق محفوظة
-  </div>
-</footer>
 
 <script src="js/app.js"></script>
+
+
+<script src="js/pagination.js"></script>
 </body>
 </html>
