@@ -36,8 +36,8 @@
 		const button = document.getElementById("shareArticle");
 		if (!button) return;
 
-		const url = window.location.href;
-		const title = document.title;
+		const url = document.querySelector('meta[property="og:url"]')?.content || window.location.href;
+		const title = document.querySelector('meta[property="og:title"]')?.content || document.title;
 		const encodedUrl = encodeURIComponent(url);
 		const encodedTitle = encodeURIComponent(title);
 
