@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://oussam1233.github.io/majalati/sitemap.xml
+Sitemap: https://heartfelt-kelpie-569825.netlify.app/sitemap.xml
