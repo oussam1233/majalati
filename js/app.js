@@ -372,7 +372,7 @@ function createHero(container) {
     container.innerHTML = `
       <div class="feature-card">
         <a href="article.html?id=${item.id}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, 'article');">
-          <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}">
+          <img src="${escapeHTML(item.image || "assets/images/placeholder.svg")}" alt="${escapeHTML(item.title)}" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
         </a>
         <div class="feature-content">
           <span class="eyebrow">${escapeHTML(item.category)}</span>
