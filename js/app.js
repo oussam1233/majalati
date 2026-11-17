@@ -1,9 +1,20 @@
 "use strict";
 
 // استخراج البيانات من window.MajalatiData
-const articles = (window.MajalatiData && window.MajalatiData.articles) || [];
-const news = (window.MajalatiData && window.MajalatiData.news) || [];
-const categories = (window.MajalatiData && window.MajalatiData.categories) || [];
+function uniqueById(items) {
+  const seen = new Set();
+  return (Array.isArray(items) ? items : []).filter(function(item) {
+    if (!item || item.id === undefined || item.id === null) return false;
+    const key = String(item.id);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+const articles = uniqueById(window.MajalatiData && window.MajalatiData.articles);
+const news = uniqueById(window.MajalatiData && window.MajalatiData.news);
+const categories = Array.isArray(window.MajalatiData && window.MajalatiData.categories)
+  ? window.MajalatiData.categories : [];
 
 /* =========================================================
    HELPERS
@@ -31,6 +42,56 @@ function formatDate(dateString) {
 
 function getQueryParam(name) {
   return new URLSearchParams(window.location.search).get(name);
+}
+
+function renderArticleContent(content) {
+  return String(content || "").split(/\r?\n/).map(function(line) {
+    const value = line.trim();
+    if (!value) return "";
+    if (value.startsWith("### ")) return "<h2>" + escapeHTML(value.slice(4)) + "</h2>";
+    if (value.startsWith("## ")) return "<h2>" + escapeHTML(value.slice(3)) + "</h2>";
+    if (/^[-*]\s+/.test(value)) return "<p>• " + escapeHTML(value.replace(/^[-*]\s+/, "")) + "</p>";
+    return "<p>" + escapeHTML(value) + "</p>";
+  }).join("");
+}
+
+function setMeta(selector, attribute, value) {
+  let element = document.querySelector(selector);
+  if (!element) {
+    element = document.createElement("meta");
+    const parts = selector.match(/\[(name|property)=["']([^"']+)["']\]/);
+    if (!parts) return;
+    element.setAttribute(parts[1], parts[2]);
+    document.head.appendChild(element);
+  }
+  element.setAttribute(attribute, value || "");
+}
+
+function setArticleMetadata(item) {
+  const title = (item.title || "مجَلّتكم") + " | مجلّتكم";
+  const description = item.excerpt || "";
+  const url = window.location.href;
+  document.title = title;
+  setMeta('meta[name="description"]', "content", description);
+  setMeta('meta[property="og:title"]', "content", title);
+  setMeta('meta[property="og:description"]', "content", description);
+  setMeta('meta[property="og:url"]', "content", url);
+  setMeta('meta[property="og:type"]', "content", "article");
+  setMeta('meta[name="twitter:title"]', "content", title);
+  setMeta('meta[name="twitter:description"]', "content", description);
+  setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
+  if (item.image) {
+    const imageURL = new URL(item.image, document.baseURI).href;
+    setMeta('meta[property="og:image"]', "content", imageURL);
+    setMeta('meta[name="twitter:image"]', "content", imageURL);
+  }
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement("link");
+    canonical.rel = "canonical";
+    document.head.appendChild(canonical);
+  }
+  canonical.href = url;
 }
 
 /* =========================================================
@@ -80,7 +141,8 @@ function isFavorite(id) {
 ========================================================= */
 
 function initializeTheme() {
-  const saved = localStorage.getItem("majalati-theme");
+  let saved = "light";
+  try { saved = localStorage.getItem("majalati-theme") || "light"; } catch (e) { /* التخزين غير متاح */ }
   if (saved === "dark") document.body.classList.add("dark");
   updateThemeButton();
 }
@@ -98,7 +160,9 @@ function setupTheme() {
   if (!btn) return;
   btn.addEventListener("click", function() {
     document.body.classList.toggle("dark");
-    localStorage.setItem("majalati-theme", document.body.classList.contains("dark") ? "dark" : "light");
+    try {
+      localStorage.setItem("majalati-theme", document.body.classList.contains("dark") ? "dark" : "light");
+    } catch (e) { /* التخزين غير متاح */ }
     updateThemeButton();
   });
 }
@@ -171,9 +235,9 @@ function setupSearch() {
     }
 
     const results = allItems.filter(function(item) {
-      return item.title.toLowerCase().includes(query) ||
-             item.excerpt.toLowerCase().includes(query) ||
-             item.category.toLowerCase().includes(query);
+      return [item.title, item.excerpt, item.category].some(function(value) {
+        return String(value || "").toLocaleLowerCase().includes(query);
+      });
     }).slice(0, 8);
 
     if (!results.length) {
@@ -216,7 +280,7 @@ function createCard(item, type) {
   return `
     <article class="article-card">
       <a href="${url}" onclick="saveLastRead(${item.id}); addToHistory(${item.id}, '${historyType}');" aria-label="${escapeHTML(item.title)}">
-        <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" loading="lazy">
+        <img src="${escapeHTML(item.image || "assets/images/placeholder.svg")}" alt="${escapeHTML(item.title)}" loading="lazy" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
       </a>
       <div class="article-body">
         <span class="eyebrow">${escapeHTML(item.category)}</span>
@@ -530,7 +594,7 @@ function initializeArticleDetails() {
   if (!container) return;
 
   const id = Number(getQueryParam("id"));
-  const item = articles.find(function(a) { return a.id === id; });
+  const item = articles.find(function(a) { return Number(a.id) === id; });
 
   if (!item) {
     container.innerHTML = `
@@ -543,13 +607,13 @@ function initializeArticleDetails() {
     return;
   }
 
-  document.title = item.title + " | مجلّتكم";
+  setArticleMetadata(item);
   saveLastRead(item.id);
   addToHistory(item.id, "article");
 
   container.innerHTML = `
     <article class="article-detail">
-      <img class="article-detail-image" src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}">
+      <img class="article-detail-image" src="${escapeHTML(item.image || "assets/images/placeholder.svg")}" alt="${escapeHTML(item.title)}" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
       <div class="article-detail-content">
         <span class="eyebrow">${escapeHTML(item.category)}</span>
         <div class="meta-row">
@@ -558,7 +622,7 @@ function initializeArticleDetails() {
         </div>
         <h1>${escapeHTML(item.title)}</h1>
         <div class="article-lead">${escapeHTML(item.excerpt)}</div>
-        <div class="article-text">${item.content.split("\n").map(function(p) { return p.trim() ? "<p>" + escapeHTML(p) + "</p>" : ""; }).join("")}</div>
+        <div class="article-text">${renderArticleContent(item.content)}</div>
         <a class="article-back" href="articles.html">← العودة إلى المقالات</a>
       </div>
     </article>
@@ -574,7 +638,7 @@ function initializeNewsDetails() {
   if (!container) return;
 
   const id = Number(getQueryParam("id"));
-  const item = news.find(function(n) { return n.id === id; });
+  const item = news.find(function(n) { return Number(n.id) === id; });
 
   if (!item) {
     container.innerHTML = `
@@ -587,7 +651,7 @@ function initializeNewsDetails() {
     return;
   }
 
-  document.title = item.title + " | مجلّتكم";
+  setArticleMetadata(item);
   saveLastRead(item.id);
   addToHistory(item.id, "news");
 
@@ -606,7 +670,7 @@ function initializeNewsDetails() {
         </div>
         <h1>${escapeHTML(item.title)}</h1>
         <div class="article-lead">${escapeHTML(item.excerpt)}</div>
-        <div class="article-text">${item.content.split("\n").map(function(p) { return p.trim() ? "<p>" + escapeHTML(p) + "</p>" : ""; }).join("")}</div>
+        <div class="article-text">${renderArticleContent(item.content)}</div>
         <a class="article-back" href="news.html">← العودة إلى الأخبار</a>
       </div>
     </article>
@@ -623,10 +687,14 @@ function setupNewsletter() {
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
-    const input = form.querySelector("input");
-    if (!input || !input.value.trim()) return;
-    alert("✅ تم تسجيل بريدك الإلكتروني بنجاح.");
-    input.value = "";
+    let status = form.querySelector("[data-newsletter-status]");
+    if (!status) {
+      status = document.createElement("p");
+      status.dataset.newsletterStatus = "true";
+      status.setAttribute("role", "status");
+      form.appendChild(status);
+    }
+    status.textContent = "خدمة الاشتراك غير مفعّلة حالياً. يرجى المحاولة لاحقاً.";
   });
 }
 
