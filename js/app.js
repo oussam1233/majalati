@@ -526,32 +526,57 @@ function loadCategoryFromURL() {
 ========================================================= */
 
 let currentNewsCategory = "all";
+let currentNewsPage = 1;
+const newsPerPage = 9;
 
 function getFilteredNews() {
   if (currentNewsCategory === "all" || currentNewsCategory === "الكل") return [...news];
   return news.filter(function(item) { return item.category === currentNewsCategory; });
 }
 
+function renderNewsPagination(totalPages) {
+  const container = document.getElementById("newsPagination");
+  if (!container) return;
+  if (totalPages <= 1) { container.innerHTML = ""; return; }
+  let html = '<button type="button" ' + (currentNewsPage === 1 ? "disabled" : "") + ' data-page="' + (currentNewsPage - 1) + '">‹</button>';
+  for (let page = 1; page <= totalPages; page += 1) {
+    html += '<button type="button" class="' + (page === currentNewsPage ? "active" : "") + '" data-page="' + page + '">' + page + '</button>';
+  }
+  html += '<button type="button" ' + (currentNewsPage === totalPages ? "disabled" : "") + ' data-page="' + (currentNewsPage + 1) + '">›</button>';
+  container.innerHTML = html;
+  container.querySelectorAll("button").forEach(function(button) {
+    button.addEventListener("click", function() {
+      if (button.disabled) return;
+      currentNewsPage = Number(button.dataset.page);
+      renderNewsPage();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+}
+
 function renderNewsPage() {
   const container = document.getElementById("newsGrid");
   if (!container) return;
-
   const empty = document.getElementById("newsEmpty");
   const count = document.getElementById("newsCount");
-  const filtered = getFilteredNews();
-
+  const filtered = getFilteredNews().slice().sort(function(a, b) {
+    return new Date(b.date) - new Date(a.date);
+  });
   if (count) count.textContent = filtered.length + " خبر";
-
   if (!filtered.length) {
     container.innerHTML = "";
     if (empty) empty.hidden = false;
+    renderNewsPagination(0);
     return;
   }
-
   if (empty) empty.hidden = true;
-  container.innerHTML = filtered.slice().sort(function(a, b) {
-    return new Date(b.date) - new Date(a.date);
-  }).map(function(item) { return createCard(item, "news"); }).join("");
+  const totalPages = Math.ceil(filtered.length / newsPerPage);
+  currentNewsPage = Math.min(Math.max(1, currentNewsPage), totalPages);
+  const start = (currentNewsPage - 1) * newsPerPage;
+  container.innerHTML = filtered.slice(start, start + newsPerPage).map(function(item) {
+    return createCard(item, "news");
+  }).join("");
+  renderNewsPagination(totalPages);
 }
 
 function setupNewsFilters() {
@@ -569,6 +594,7 @@ function setupNewsFilters() {
 
     btn.addEventListener("click", function() {
       currentNewsCategory = btn.dataset.category;
+      currentNewsPage = 1;
       buttons.forEach(function(b) { b.classList.remove("active"); });
       btn.classList.add("active");
       renderNewsPage();
@@ -661,7 +687,7 @@ function initializeNewsDetails() {
 
   container.innerHTML = `
     <article class="article-detail">
-      <img class="article-detail-image" src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}">
+      <img class="article-detail-image" src="${escapeHTML(item.image || "assets/images/placeholder.svg")}" alt="${escapeHTML(item.title)}" onerror="this.onerror=null;this.src='assets/images/placeholder.svg'">
       <div class="article-detail-content">
         <span class="eyebrow">${escapeHTML(item.category)}</span>
         <div class="meta-row">
